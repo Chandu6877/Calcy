@@ -1,0 +1,28 @@
+version: '3.8'
+services:
+  calcy:
+    build: 
+    context: ./
+    ports:
+      - "3000:3000"
+    networks:
+      - networking
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+  promemtheus:
+    image: prom/prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    networks:
+        - networking
+    ports:
+      - "9090:9090"
+
+
+networks:
+  - networking:
+
+
+
+
