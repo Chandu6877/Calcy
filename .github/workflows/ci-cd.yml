@@ -21,12 +21,14 @@ jobs:
     - name: 📦 Install dependencies
       run: npm install
 
-    - name:  Run Unit Tests (Optional)
-      run: echo "Run tests here if any"
+    - name: 📥 Install Docker Compose
+      run: |
+        sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+        sudo chmod +x /usr/local/bin/docker-compose
+        docker-compose --version
 
     - name: 🐳 Build Docker image
       run: docker build -t calculator-app .
 
     - name: 🚀 Deploy with Docker Compose
-      run: docker-compose up
-
+      run: docker-compose up -d
