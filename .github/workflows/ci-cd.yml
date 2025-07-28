@@ -28,5 +28,5 @@ jobs:
       run: docker build -t calculator-app .
 
     - name: 🚀 Deploy with Docker Compose
-      run: docker-compose up -d
+      run: docker-compose up
 
